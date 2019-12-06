@@ -345,10 +345,10 @@ print("Perplexity: ", lda_model.perplexity(data_vectorized))
 
 pyLDAvis.enable_notebook()
 panel = pyLDAvis.sklearn.prepare(lda_model, data_vectorized, vectorizer, mds='tsne')
-
 pyLDAvis.save_html(panel, 'model.html')
 
 
+#Supervised Learning 
 # Predict the topic
 mytext = ["Two former close aides to Prime Minister Benjamin Netanyahu of Israel are among those facing likely criminal charges in one of the country’s biggest corruption scandals yet, arising from the multibillion-dollar purchase of submarines and missile boats from Germany. A former chief of staff to Mr. Netanyahu, David Sharan, is accused of accepting bribes from an Israel agent for the shipbuilder, ThyssenKrupp Marine Systems. David Shimron, who has served as a personal lawyer and close confidant to Mr. Netanyahu and is also his second cousin, is accused of laundering money to help the shipbuilders agent, Michael Ganor, conceal his role in a separate financial transaction"]
 
@@ -359,6 +359,7 @@ norm_text = vectorizer.transform(normalize_corpus(mytext))
 
 norm_text = vectorizer.transform(normalized_test)
 
+#Predicted Model Output
 model_output = lda_model.transform(norm_text)
 
 
