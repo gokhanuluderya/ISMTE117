@@ -1,4 +1,8 @@
-Dataset: 20newgroups data from ucirvine repo
+##PROJECT OVERVIEW
+
+
+
+# Dataset: 20newgroups data from ucirvine repo
 
 Business case / problem
 Archiving newsgroup posts and news articles is a main use case in the news industry. We know that an article or a newsgroup post can also 
