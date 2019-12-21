@@ -423,3 +423,58 @@ df_document_topic['third_dominant_topic'] = third_dominant_topic + 1
 df_document_topic['third_dominant_topic_wt'] = third_dominant_topic_wt
 
 
+
+####Supervised Model
+
+from sklearn.datasets import fetch_20newsgroups
+from sklearn.ensemble import RandomForestClassifier
+
+newsgroups_test = fetch_20newsgroups(subset='test')
+text_test = newsgroups_test['data']
+target_test = newsgroups_test['target']
+
+normalized_test_data = normalize_corpus(text_test, lemmatize=True)
+
+test_data_vectorized = vectorizer.fit_transform(normalized_test_data)
+
+X_train = data_vectorized
+
+Y_train = target
+
+##Randomforest Model
+
+clf = RandomForestClassifier(n_estimators=1000, random_state=0)
+
+clf.fit(X_train,Y_train)
+
+#Predicting Output
+test_data_pred = clf.predict(test_data_vectorized)
+
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+
+columns_name = ('atheism',
+'computer.graphics',
+'os.mswindows.miscellaneous',
+'computersystems.ibm.pchardware',
+'computer.systems.mac.hardware',
+'windows.x',
+'miscellaneous.forsale',
+'Autos',
+'motorcycles',
+'sports.baseball',
+'sports.hockey',
+'sci.crypt',
+'sci.electronics',
+'sci.med',
+'sci.space',
+'religion.christian',
+'politcs.guns',
+'politics.middleeast',
+'politics.miscellaneous',
+'religion.miscellaneous')
+
+Confusion_Matrix = pd.DataFrame(confusion_matrix(target_test,test_data_pred), index = row_names)
+
+
+
+
